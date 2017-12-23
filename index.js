@@ -100,7 +100,7 @@ module.exports = {
     },
     getCode: function (name) {
         for (var code in coins) {
-            if (coins[code].name === key) {
+            if (coins[code].name === name) {
                 return code
             }
         }
@@ -108,8 +108,8 @@ module.exports = {
         throw new Error('Cant find code by name: ' + name);
     },
     getLink: function (key) {
-        var code = this.getCode(key);
-        return coins[code].link
+        var coin = coins[key] || this.coins[this.getCode(key)]
+        return coin.link
     },
     algos: algos,
     coins: coins,
