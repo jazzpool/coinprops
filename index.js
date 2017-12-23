@@ -107,6 +107,10 @@ module.exports = {
 
         throw new Error('Cant find code by name: ' + name);
     },
+    getLink: function (key) {
+        var code = this.getCode(key);
+        return coins[code].link
+    },
     algos: algos,
     coins: coins,
 }
