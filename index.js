@@ -21,12 +21,29 @@ var coins = {
     DASH: {
         name: 'dash',
         algorithm: 'x11',
-        multiplier: 1
+        multiplier: 1,
+        link: {
+            tx: 'https://chainz.cryptoid.info/dash/tx.dws?{hash}.htm',
+            hash: 'https://chainz.cryptoid.info/dash/block.dws?{hash}.htm',
+        }
     },
     DRK: {
-        name: 'DRK',
+        name: 'dash',
         algorithm: 'x11',
-        multiplier: 1
+        multiplier: 1,
+        link: {
+            tx: 'https://chainz.cryptoid.info/dash/tx.dws?{hash}.htm',
+            hash: 'https://chainz.cryptoid.info/dash/block.dws?{hash}.htm',
+        }
+    },
+    LTC: {
+        name: 'litecoin',
+        algorithm: 'scrypt',
+        multiplier: Math.pow(2, 16),
+        link: {
+            tx: 'https://chainz.cryptoid.info/ltc/tx.dws?{hash}.htm',
+            hash: 'https://chainz.cryptoid.info/ltc/block.dws?{hash}.htm',
+        }
     }
 };
 

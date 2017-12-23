@@ -1,10 +1,11 @@
 # Coinprops
 
 ### coins 
+ - BTC
+ - LTC
+ - DASH
  - SXC
  - DOGE
- - BTC
- - DASH
  - DRK
 
 ### algorithms
