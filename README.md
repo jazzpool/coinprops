@@ -1,0 +1,30 @@
+# Coinprops
+
+### coins 
+ - SXC
+ - DOGE
+ - BTC
+ - DASH
+ - DRK
+
+### algorithms
+ - sha256
+ - sha256d
+ - sha1
+ - x11
+ - x13
+ - x15
+ - nist5
+ - quark
+ - skein
+ - shavite3
+ - hefty1
+ - qubit
+ - scrypt
+ - scrypt-og
+ - scrypt-jane
+ - scrypt-n
+ - keccak
+ - blake
+ - groestl
+ - fugue
