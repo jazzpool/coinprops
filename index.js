@@ -2,7 +2,11 @@ var coins = {
     SXC: {
         name: 'sexcoin',
         algorithm: 'scrypt',
-        multiplier: Math.pow(2, 16)
+        multiplier: Math.pow(2, 16),
+        link: {
+            tx: 'https://prohashing.com/explorer/Sexcoin/{hash}',
+            hash: 'https://prohashing.com/explorer/Sexcoin/{hash}',
+        },
     },
     DOGE: {
         name: 'dogecoin',
