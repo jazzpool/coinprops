@@ -12,11 +12,19 @@ var coins = {
         name: 'dogecoin',
         algorithm: 'scrypt',
         multiplier: Math.pow(2, 16),
+        link: {
+            tx: 'https://dogechain.info/tx/{hash}',
+            hash: 'https://dogechain.info/block/{hash}',
+        },
     },
     BTC: {
         name: 'bitcoin',
         algorithm: 'sha256',
-        multiplier: 1
+        multiplier: 1,
+        link: {
+            tx: 'https://blockchain.info/block/{hash}',
+            hash: 'https://blockchain.info/tx/{hash}',
+        },
     },
     DASH: {
         name: 'dash',
@@ -25,7 +33,7 @@ var coins = {
         link: {
             tx: 'https://chainz.cryptoid.info/dash/tx.dws?{hash}.htm',
             hash: 'https://chainz.cryptoid.info/dash/block.dws?{hash}.htm',
-        }
+        },
     },
     DRK: {
         name: 'dash',
@@ -34,7 +42,7 @@ var coins = {
         link: {
             tx: 'https://chainz.cryptoid.info/dash/tx.dws?{hash}.htm',
             hash: 'https://chainz.cryptoid.info/dash/block.dws?{hash}.htm',
-        }
+        },
     },
     LTC: {
         name: 'litecoin',
@@ -43,7 +51,7 @@ var coins = {
         link: {
             tx: 'https://chainz.cryptoid.info/ltc/tx.dws?{hash}.htm',
             hash: 'https://chainz.cryptoid.info/ltc/block.dws?{hash}.htm',
-        }
+        },
     }
 };
 
