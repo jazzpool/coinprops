@@ -7,6 +7,7 @@
  - SXC
  - DOGE
  - DRK
+ - B2X
 
 ### algorithms
  - sha256
