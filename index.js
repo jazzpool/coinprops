@@ -52,6 +52,15 @@ var coins = {
             tx: 'https://chainz.cryptoid.info/ltc/tx.dws?{hash}.htm',
             hash: 'https://chainz.cryptoid.info/ltc/block.dws?{hash}.htm',
         },
+    },
+    B2X: {
+        name: 'bitcoin2x',
+        algorithm: 'x11',
+        multiplier: 1,
+        link: {
+            tx: '',
+            hash: '',
+        }
     }
 };
 
