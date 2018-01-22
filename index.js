@@ -1,3 +1,5 @@
+var DEFAULT_PRECISION = 8;
+
 var coins = {
     SXC: {
         name: 'sexcoin',
@@ -140,6 +142,10 @@ module.exports = {
         }
 
         throw new Error('Cant find code by name: ' + name);
+    },
+    getPrecision: function (name) {
+        var coin = coins[key] || this.coins[this.getCode(key)]
+        return coin.precision || DEFAULT_PRECISION;
     },
     getLink: function (key) {
         var coin = coins[key] || this.coins[this.getCode(key)]
