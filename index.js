@@ -113,7 +113,7 @@ for (var algo in algos){
 }
 
 
-module.exports = {
+var coinprops = {
     getMultiplier: function (key) {
         if (algos[key]) {
             return algos[key].multiplier;
@@ -144,11 +144,15 @@ module.exports = {
         throw new Error('Cant find code by name: ' + name);
     },
     getPrecision: function (key) {
-        var coin = coins[key] || this.coins[this.getCode(key)]
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
         return coin.precision || DEFAULT_PRECISION;
     },
+    precise: function (key, value) {
+        var precision = coinprops.getPrecision(key);
+        return Number(value.toFixed(precision))
+    }
     getLink: function (key) {
-        var coin = coins[key] || this.coins[this.getCode(key)]
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
         return coin.link
     },
     algos: algos,
