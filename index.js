@@ -158,3 +158,5 @@ var coinprops = {
     algos: algos,
     coins: coins,
 }
+
+module.exports = coinprops
