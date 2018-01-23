@@ -150,7 +150,7 @@ var coinprops = {
     precise: function (key, value) {
         var precision = coinprops.getPrecision(key);
         return Number(value.toFixed(precision))
-    }
+    },
     getLink: function (key) {
         var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
         return coin.link
