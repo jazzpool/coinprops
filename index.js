@@ -169,6 +169,11 @@ var coinprops = {
             return acc;
         }, {});
     },
+    init: function () {
+        global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
+            return coinprops.precise(coin, this);
+        };
+    },
 };
 
 module.exports = coinprops;
