@@ -60,10 +60,10 @@ var coins = {
         algorithm: 'x11',
         multiplier: 1,
         link: {
-            tx: '',
-            hash: '',
+            tx: 'https://explorer.b2x-segwit.io/tx/{hash}',
+            hash: 'https://explorer.b2x-segwit.io/block/{hash}',
         }
-    }
+    },
 };
 
 const algos = {
@@ -157,6 +157,18 @@ var coinprops = {
     },
     algos: algos,
     coins: coins,
-}
+    getMapByNames: function (coins) {
+        return coins.reduce(function (acc, coinName) {
+            acc[coinName] = coinprops.getCode(coinName);
+            return acc;
+        }, {});
+    },
+    getMapByCodes: function (coins) {
+        return coins.reduce(function (acc, coinCode) {
+            acc[coinCode] = coinprops.getName(coinCode);
+            return acc;
+        }, {});
+    },
+};
 
-module.exports = coinprops
+module.exports = coinprops;
