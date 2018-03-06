@@ -1,4 +1,5 @@
 var DEFAULT_PRECISION = 8;
+var DEFAULT_CONFIRMATIONS = 6;
 
 var coins = {
     SXC: {
@@ -146,6 +147,10 @@ var coinprops = {
     getPrecision: function (key) {
         var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
         return coin.precision || DEFAULT_PRECISION;
+    },
+    getConfirmations: function (key) {
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
+        return coin.confirmations || DEFAULT_CONFIRMATIONS;
     },
     precise: function (key, value) {
         var precision = coinprops.getPrecision(key);
