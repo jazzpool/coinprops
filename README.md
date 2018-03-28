@@ -8,6 +8,8 @@
  - DOGE
  - DRK
  - B2X
+ - BCH
+ - TLT
 
 ### algorithms
  - sha256

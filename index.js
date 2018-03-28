@@ -29,6 +29,24 @@ var coins = {
             hash: 'https://blockchain.info/tx/{hash}',
         },
     },
+    TLT: {
+        name: 'tlt',
+        algorithm: 'sha256',
+        multiplier: 1,
+        link: {
+            tx: '',
+            hash: '',
+        },
+    },
+    BCH: {
+        name: 'bitcoincash',
+        algorithm: 'sha256',
+        multiplier: 1,
+        link: {
+            tx: 'https://blockchair.com/search?q={hash}',
+            hash: 'https://blockchair.com/search?q={hash}',
+        },
+    },
     DASH: {
         name: 'dash',
         algorithm: 'x11',
