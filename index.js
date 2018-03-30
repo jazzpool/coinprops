@@ -30,7 +30,7 @@ var coins = {
         },
     },
     TLT: {
-        name: 'tlt',
+        name: 'talantcoin',
         algorithm: 'sha256',
         multiplier: 1,
         link: {
