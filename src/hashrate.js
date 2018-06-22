@@ -24,4 +24,3 @@ coinprops.getHashrateFromShares = function getHashrateFromShares(coin, shares, d
 coinprops.getEstimatedMinigTime = function getEstimatedMinigTime(difficulty, hashrate) {
     return difficulty * Math.pow(2, 32) / hashrate;
 };
-

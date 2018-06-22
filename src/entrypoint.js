@@ -10,5 +10,6 @@
     root.coinprops = {};
 
     //include(./descriptions.js)
+    //include(./gets.js)
     //include(./hashrate.js)
 });

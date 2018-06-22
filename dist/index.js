@@ -12,89 +12,98 @@
     var DEFAULT_PRECISION = 8;
 var DEFAULT_CONFIRMATIONS = 6;
 
-var coins = {
-    SXC: {
-        name: 'sexcoin',
-        algorithm: 'scrypt',
-        multiplier: Math.pow(2, 16),
-        title: 'Sexcoin',
-        link: {
-            tx: 'https://prohashing.com/explorer/Sexcoin/{hash}',
-            hash: 'https://prohashing.com/explorer/Sexcoin/{hash}',
-        },
+var coins = {}
+
+var  _ = 'https://blockchain.info/';
+coins.BTC = {
+    title: 'Bitcoin',
+    name: 'bitcoin',
+    algorithm: 'sha256',
+    multiplier: 1,
+    link: {
+        tx: _ + 'block/{hash}',
+        hash: _ + '/tx/{hash}',
+        address: _ + '/address/{hash}',
     },
-    DOGE: {
-        name: 'dogecoin',
-        algorithm: 'scrypt',
-        multiplier: Math.pow(2, 16),
-        title: 'Dogecoin',
-        link: {
-            tx: 'https://dogechain.info/tx/{hash}',
-            hash: 'https://dogechain.info/block/{hash}',
-        },
-    },
-    BTC: {
-        name: 'bitcoin',
-        algorithm: 'sha256',
-        multiplier: 1,
-        title: 'Bitcoin',
-        link: {
-            tx: 'https://blockchain.info/block/{hash}',
-            hash: 'https://blockchain.info/tx/{hash}',
-        },
-    },
-    TLT: {
-        name: 'talantcoin',
-        algorithm: 'sha256',
-        title: 'Talant Coin',
-        multiplier: 1,
-        link: {
-            tx: '',
-            hash: '',
-        },
-    },
-    BCH: {
-        name: 'bitcoincash',
-        algorithm: 'sha256',
-        title: 'Bitcoin Cash',
-        multiplier: 1,
-        link: {
-            tx: 'https://blockchair.com/search?q={hash}',
-            hash: 'https://blockchair.com/search?q={hash}',
-        },
-    },
-    DASH: {
-        name: 'dash',
-        algorithm: 'x11',
-        title: 'Dash',
-        multiplier: 1,
-        link: {
-            tx: 'https://chainz.cryptoid.info/dash/tx.dws?{hash}.htm',
-            hash: 'https://chainz.cryptoid.info/dash/block.dws?{hash}.htm',
-        },
-    },
-    LTC: {
-        name: 'litecoin',
-        algorithm: 'scrypt',
-        title: 'Litecoin',
-        multiplier: Math.pow(2, 16),
-        link: {
-            tx: 'https://chainz.cryptoid.info/ltc/tx.dws?{hash}.htm',
-            hash: 'https://chainz.cryptoid.info/ltc/block.dws?{hash}.htm',
-        },
-    },
-    B2X: {
-        name: 'bitcoin2x',
-        title: 'Segwit 2X',
-        algorithm: 'x11',
-        multiplier: 1,
-        link: {
-            tx: 'https://explorer.b2x-segwit.io/tx/{hash}',
-            hash: 'https://explorer.b2x-segwit.io/block/{hash}',
-        }
+};
+var _ = 'https://prohashing.com/explorer/Sexcoin/{hash}';
+coins.SXC = {
+    name: 'sexcoin',
+    algorithm: 'scrypt',
+    multiplier: Math.pow(2, 16),
+    title: 'Sexcoin',
+    link: {tx: _, hash: _, address: _},
+};
+var _ = 'https://dogechain.info/';
+coins.DOGE = {
+    name: 'dogecoin',
+    algorithm: 'scrypt',
+    multiplier: Math.pow(2, 16),
+    title: 'Dogecoin',
+    link: {
+        tx: _ + 'tx/{hash}',
+        hash: _ + 'block/{hash}',
+        address: _ + 'address/{hash}',
     },
 };
 
+
+coins.TLT = {
+    name: 'talantcoin',
+    algorithm: 'sha256',
+    title: 'Talant Coin',
+    multiplier: 1,
+    link: {},
+};
+
+_ = 'https://blockchair.com/search?q={hash}'
+coins.BCH = {
+    name: 'bitcoincash',
+    algorithm: 'sha256',
+    title: 'Bitcoin Cash',
+    multiplier: 1,
+    link: {
+        tx: _,
+        hash: _,
+        address: _,
+    },
+};
+
+_ = 'https://chainz.cryptoid.info/dash/'
+coins.DASH = {
+    name: 'dash',
+    algorithm: 'x11',
+    title: 'Dash',
+    multiplier: 1,
+    link: {
+        tx: _ + 'tx.dws?{hash}.htm',
+        hash: _ + 'block.dws?{hash}.htm',
+    },
+};
+
+_ = 'https://chainz.cryptoid.info/ltc/'
+coins.LTC = {
+    name: 'litecoin',
+    algorithm: 'scrypt',
+    title: 'Litecoin',
+    multiplier: Math.pow(2, 16),
+    link: {
+        tx: _ + 'tx.dws?{hash}.htm',
+        hash: _ + 'block.dws?{hash}.htm',
+    },
+};
+
+_ = 'https://explorer.b2x-segwit.io/';
+coins.B2X = {
+    name: 'bitcoin2x',
+    title: 'Segwit 2X',
+    algorithm: 'x11',
+    multiplier: 1,
+    link: {
+        tx: _ + 'tx/{hash}',
+        hash: _ +'block/{hash}',
+    }
+};
 
 var algos = {
     'sha256': {},
@@ -145,7 +154,7 @@ for (var algo in algos){
 coinprops.algos = algos;
 coinprops.coins = coins;
 
-coinprops.getMultiplier = function getMultiplier (key) {
+    coinprops.getMultiplier = function getMultiplier (key) {
     if (algos[key]) {
         return algos[key].multiplier;
     }
@@ -163,11 +172,13 @@ coinprops.getMultiplier = function getMultiplier (key) {
     throw new Error('Cant find multiplier: ' + key);
 };
 
-
 coinprops.getName = function getName (code) {
-    return coins[code].name;
-};
+    if (coins[code]) {
+        return coins[code].name;
+    }
 
+    throw new Error('Cant find name by code: ' + code);
+};
 
 coinprops.getCode = function (name) {
     for (var code in coins) {
@@ -207,8 +218,9 @@ coinprops.getBlockLink = function getLink (coin, hash) {
     return coinprops.getLink(coin).hash.replace('{hash}', hash);
 };
 
-coinprops.getAddressLink = function getLink (key) {
-    return coinprops.getLink(coin).address.replace('{hash}', hash);
+coinprops.getAddressLink = function getLink (coin) {
+    var links = coinprops.getLink(coin);
+    return links.address && links.address.replace('{hash}', hash);
 };
 
 coinprops.getMapByNames = function getMapByNames (coins) {
@@ -257,6 +269,5 @@ coinprops.getHashrateFromShares = function getHashrateFromShares(coin, shares, d
 coinprops.getEstimatedMinigTime = function getEstimatedMinigTime(difficulty, hashrate) {
     return difficulty * Math.pow(2, 32) / hashrate;
 };
-
 
 });

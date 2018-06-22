@@ -1,6 +1,8 @@
 # Coinprops
 
-### coins 
+JavaScript library to handle cryptocurrency properties such as hashing algorithms, codes, blockchain explorer links, shares multiplier, hashrate tools etc.
+
+### Supported coins
  - BTC
  - LTC
  - DASH
@@ -11,7 +13,7 @@
  - BCH
  - TLT
 
-### algorithms
+### Supported algorithms
  - sha256
  - sha256d
  - sha1
@@ -32,3 +34,6 @@
  - blake
  - groestl
  - fugue
+
+
+### Development
