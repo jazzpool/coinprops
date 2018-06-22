@@ -231,16 +231,21 @@ coinprops.init = function init () {
     };
 };
 
-    coinprops.hashrateToString = function hashrateToString(hashrate) {
-    var i = -1;
-    var byteUnits = ['KH', 'MH', 'GH', 'TH', 'PH'];
+    var levels = ['', 'KH', 'MH', 'GH', 'TH', 'PH'];
 
-    do {
-        hashrate = hashrate / 1000;
-        i++;
-    } while (hashrate > 1000);
+coinprops.getRateLevel = function getRateLevel(value) {
+    var level = 0;
+    
+    while (value >= 1000 && level < levels.length) {
+        value /= 1000;
+        level++;
+    }
 
-    return hashrate.toFixed(2) + byteUnits[i];
+    return level;
+};
+
+coinprops.hashrateToString = function hashrateToString(hashrate) {
+    return hashrate.toFixed(2) + coinprops.getRateLevel(hashrate);
 };
 
 coinprops.getHashrateFromShares = function getHashrateFromShares(coin, shares, durationSecs) {
@@ -252,5 +257,6 @@ coinprops.getHashrateFromShares = function getHashrateFromShares(coin, shares, d
 coinprops.getEstimatedMinigTime = function getEstimatedMinigTime(difficulty, hashrate) {
     return difficulty * Math.pow(2, 32) / hashrate;
 };
+
 
 });
