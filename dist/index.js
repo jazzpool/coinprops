@@ -47,7 +47,6 @@ coins.DOGE = {
     },
 };
 
-
 coins.TLT = {
     name: 'talantcoin',
     algorithm: 'sha256',
@@ -56,7 +55,7 @@ coins.TLT = {
     link: {},
 };
 
-_ = 'https://blockchair.com/search?q={hash}'
+var _ = 'https://blockchair.com/search?q={hash}'
 coins.BCH = {
     name: 'bitcoincash',
     algorithm: 'sha256',
@@ -69,7 +68,7 @@ coins.BCH = {
     },
 };
 
-_ = 'https://chainz.cryptoid.info/dash/'
+var _ = 'https://chainz.cryptoid.info/dash/'
 coins.DASH = {
     name: 'dash',
     algorithm: 'x11',
@@ -81,29 +80,18 @@ coins.DASH = {
     },
 };
 
-_ = 'https://chainz.cryptoid.info/ltc/'
-coins.LTC = {
-    name: 'litecoin',
-    algorithm: 'scrypt',
-    title: 'Litecoin',
-    multiplier: Math.pow(2, 16),
-    link: {
-        tx: _ + 'tx.dws?{hash}.htm',
-        hash: _ + 'block.dws?{hash}.htm',
-    },
-};
-
-_ = 'https://explorer.b2x-segwit.io/';
+var _ = 'https://explorer.b2x-segwit.io/';
 coins.B2X = {
     name: 'bitcoin2x',
     title: 'Segwit 2X',
     algorithm: 'x11',
     multiplier: 1,
     link: {
-        tx: _ + 'tx/{hash}',
         hash: _ +'block/{hash}',
+        tx: _ + 'tx/{hash}',
     }
 };
+
 
 var algos = {
     'sha256': {},

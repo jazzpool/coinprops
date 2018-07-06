@@ -3,54 +3,13 @@ var DEFAULT_CONFIRMATIONS = 6;
 
 var coins = {}
 
-//include(./coins/btc.js)
-//include(./coins/sxc.js)
-//include(./coins/doge.js)
-
-coins.TLT = {
-    name: 'talantcoin',
-    algorithm: 'sha256',
-    title: 'Talant Coin',
-    multiplier: 1,
-    link: {},
-};
-
-_ = 'https://blockchair.com/search?q={hash}'
-coins.BCH = {
-    name: 'bitcoincash',
-    algorithm: 'sha256',
-    title: 'Bitcoin Cash',
-    multiplier: 1,
-    link: {
-        tx: _,
-        hash: _,
-        address: _,
-    },
-};
-
-_ = 'https://chainz.cryptoid.info/dash/'
-coins.DASH = {
-    name: 'dash',
-    algorithm: 'x11',
-    title: 'Dash',
-    multiplier: 1,
-    link: {
-        tx: _ + 'tx.dws?{hash}.htm',
-        hash: _ + 'block.dws?{hash}.htm',
-    },
-};
-
-_ = 'https://explorer.b2x-segwit.io/';
-coins.B2X = {
-    name: 'bitcoin2x',
-    title: 'Segwit 2X',
-    algorithm: 'x11',
-    multiplier: 1,
-    link: {
-        tx: _ + 'tx/{hash}',
-        hash: _ +'block/{hash}',
-    }
-};
+// include('./coins/btc.js')
+// include('./coins/sxc.js')
+// include('./coins/doge.js')
+// include('./coins/tlt.js')
+// include('./coins/bch.js')
+// include('./coins/dash.js')
+// include('./coins/b2x.js')
 
 var algos = {
     'sha256': {},

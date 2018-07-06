@@ -9,7 +9,7 @@
 })(this, function (root) {
     root.coinprops = {};
 
-    //include(./descriptions.js)
-    //include(./gets.js)
-    //include(./hashrate.js)
+    // include('./descriptions.js')
+    // include('./gets.js')
+    // include('./hashrate.js')
 });
