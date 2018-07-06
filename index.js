@@ -85,7 +85,7 @@ var coins = {
     },
 };
 
-const algos = {
+var algos = {
     'sha256': {},
     'sha256d': {},
     'sha1': {},
@@ -163,11 +163,15 @@ var coinprops = {
         throw new Error('Cant find code by name: ' + name);
     },
     getPrecision: function (key) {
-        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
         return coin.precision || DEFAULT_PRECISION;
     },
+    getAlgorithm: function (key) {
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
+        return coin.algorithm;
+    },
     getConfirmations: function (key) {
-        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
         return coin.confirmations || DEFAULT_CONFIRMATIONS;
     },
     precise: function (key, value) {
@@ -175,7 +179,7 @@ var coinprops = {
         return Number(value.toFixed(precision))
     },
     getLink: function (key) {
-        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)]
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
         return coin.link
     },
     algos: algos,
