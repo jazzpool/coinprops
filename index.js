@@ -178,6 +178,31 @@ var coinprops = {
         var precision = coinprops.getPrecision(key);
         return Number(value.toFixed(precision))
     },
+    toDecimal: function (number) {
+        var data = String(number).split(/[eE]/);
+
+        if (data.length === 1) return data[0];
+    
+        var z = '';
+    
+        var sign = number < 0 ? '-' : '';
+        var str = data[0].replace('.', '');
+        var mag = Number(data[1]) + 1;
+    
+        if (mag < 0) {
+            z = sign + '0.';
+            while (mag++) {
+                z += '0';
+            }
+            return z + str.replace(/^-/, '');
+        }
+    
+        mag -= str.length;
+        while (mag--) {
+            z += '0';
+        }
+        return str + z;
+    },
     getLink: function (key) {
         var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
         return coin.link
@@ -199,6 +224,10 @@ var coinprops = {
     init: function () {
         global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
             return coinprops.precise(coin, this);
+        };
+
+        global.Number.prototype.toDecimal = global.Number.prototype.toDecimal || function () {
+            return coinprops.toDecimal(this);
         };
     },
 };
