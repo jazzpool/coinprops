@@ -1,5 +1,6 @@
 var DEFAULT_PRECISION = 8;
 var DEFAULT_CONFIRMATIONS = 6;
+var DEFAULT_HASHRATE_TYPE = 'hash';
 
 var coins = {
     SXC: {
@@ -77,7 +78,7 @@ var coins = {
     ZEC: {
         name: 'zcash',
         algorithm: 'equihash',
-        hashtype: 'sol',
+        hashrateType: 'sol',
         link: {
             tx: 'https://explorer.zcha.in/transactions/{hash}',
             hash: 'https://explorer.zcha.in/blocks/{hash}',
@@ -223,6 +224,10 @@ var coinprops = {
             acc[coinCode] = coinprops.getName(coinCode);
             return acc;
         }, {});
+    },
+    getHashrateType: function (coin) {
+        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
+        return coin.hashrateType || DEFAULT_HASHRATE_TYPE;
     },
     init: function () {
         global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
