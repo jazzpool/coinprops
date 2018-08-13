@@ -25,17 +25,8 @@ var coins = {
         algorithm: 'sha256',
         multiplier: 1,
         link: {
-            tx: 'https://blockchain.info/block/{hash}',
-            hash: 'https://blockchain.info/tx/{hash}',
-        },
-    },
-    TLT: {
-        name: 'talantcoin',
-        algorithm: 'sha256',
-        multiplier: 1,
-        link: {
-            tx: '',
-            hash: '',
+            tx: 'https://blockchain.info/tx/{hash}',
+            hash: 'https://blockchain.info/block/{hash}',
         },
     },
     BCH: {
