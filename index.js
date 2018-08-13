@@ -231,7 +231,7 @@ var coinprops = {
         return coin.hashrateType || DEFAULT_HASHRATE_TYPE;
     },
     getHashrateTypeByAlgorithm: function (algo) {
-        return algos[algo] && algos[algo].hashrateType || 'hash',
+        return algos[algo] && algos[algo].hashrateType || 'hash';
     },
     init: function () {
         global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
