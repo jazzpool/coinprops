@@ -100,6 +100,7 @@ var algos = {
     'hefty1': {},
     'qubit': {},
     'equihash': {
+        hashrateType: 'sol',
         multiplier: Math.pow(2, 19),
     },
     'scrypt': {
@@ -226,8 +227,11 @@ var coinprops = {
         }, {});
     },
     getHashrateType: function (coin) {
-        var coin = coins[key] || coinprops.coins[coinprops.getCode(key)];
+        var coin = coins[coin] || coinprops.coins[coinprops.getCode(coin)];
         return coin.hashrateType || DEFAULT_HASHRATE_TYPE;
+    },
+    getHashrateTypeByAlgorithm: function (algo) {
+        return algos[algo] && algos[algo].hashrateType || 'hash',
     },
     init: function () {
         global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
