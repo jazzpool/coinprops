@@ -82,7 +82,8 @@ var coins = {
         link: {
             tx: 'https://explorer.zcha.in/transactions/{hash}',
             hash: 'https://explorer.zcha.in/blocks/{hash}',
-        }
+        },
+        multiplier: Math.pow(2, 19),
     },
 };
 
