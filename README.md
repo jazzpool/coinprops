@@ -9,7 +9,7 @@
  - DRK
  - B2X
  - BCH
- - TLT
+ - ZEC
 
 ### algorithms
  - sha256

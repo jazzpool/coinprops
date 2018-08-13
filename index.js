@@ -74,6 +74,15 @@ var coins = {
             hash: 'https://explorer.b2x-segwit.io/block/{hash}',
         }
     },
+    ZEC: {
+        name: 'zcash',
+        algorithm: 'equihash',
+        hashtype: 'sol',
+        link: {
+            tx: 'https://explorer.zcha.in/transactions/{hash}',
+            hash: 'https://explorer.zcha.in/blocks/{hash}',
+        }
+    },
 };
 
 var algos = {
@@ -89,6 +98,9 @@ var algos = {
     'shavite3': {},
     'hefty1': {},
     'qubit': {},
+    'equihash': {
+        multiplier: Math.pow(2, 19),
+    },
     'scrypt': {
         multiplier: Math.pow(2, 16),
     },
