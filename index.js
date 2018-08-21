@@ -103,6 +103,7 @@ var algos = {
     'equihash': {
         hashrateType: 'sol',
         multiplier: Math.pow(2, 19),
+        diff: 0x0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff,
     },
     'scrypt': {
         multiplier: Math.pow(2, 16),
@@ -233,6 +234,20 @@ var coinprops = {
     },
     getHashrateTypeByAlgorithm: function (algo) {
         return algos[algo] && algos[algo].hashrateType || 'hash';
+    },
+    targetToDiff(diff, target) {
+        let zeroPad = 0;
+
+        for(let i of target) {
+            if (i === '0') {
+                zeroPad++;
+            } else {
+                break;
+            }
+        }
+
+        const adj = target.slice(zeroPad, 64);
+        return diff / parseInt('0x' + adj);
     },
     init: function () {
         global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
