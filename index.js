@@ -26,8 +26,9 @@ var coins = {
         algorithm: 'sha256',
         multiplier: 1,
         link: {
-            tx: 'https://blockchain.info/tx/{hash}',
-            hash: 'https://blockchain.info/block/{hash}',
+            tx: 'https://blockchain.info/btc/tx/{hash}',
+            hash: 'https://blockchain.info/btc/block/{hash}',
+            address: 'https://blockchain.info/btc/address/{hash}',
         },
     },
     BCH: {
@@ -83,9 +84,12 @@ var coins = {
             tx: 'https://explorer.zcha.in/transactions/{hash}',
             hash: 'https://explorer.zcha.in/blocks/{hash}',
         },
-        multiplier: Math.pow(2, 19),
+        multiplier: 1,
     },
 };
+
+var baseDiff = 0x00000000ffff0000000000000000000000000000000000000000000000000000;
+var equihashDiff = 0x0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
 
 var algos = {
     'sha256': {},
@@ -102,8 +106,9 @@ var algos = {
     'qubit': {},
     'equihash': {
         hashrateType: 'sol',
-        multiplier: Math.pow(2, 19),
-        diff: 0x0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff,
+        multiplier: 1,
+        diff: equihashDiff,
+        diffModifier: equihashDiff/baseDiff,
     },
     'scrypt': {
         multiplier: Math.pow(2, 16),
@@ -235,10 +240,10 @@ var coinprops = {
     getHashrateTypeByAlgorithm: function (algo) {
         return algos[algo] && algos[algo].hashrateType || 'hash';
     },
-    targetToDiff(diff, target) {
-        let zeroPad = 0;
+    targetToDiff: function(diff, target) {
+        var zeroPad = 0;
 
-        for(let i of target) {
+        for(var i of target) {
             if (i === '0') {
                 zeroPad++;
             } else {
@@ -246,8 +251,12 @@ var coinprops = {
             }
         }
 
-        const adj = target.slice(zeroPad, 64);
+        var adj = target.slice(zeroPad, 64);
         return diff / parseInt('0x' + adj);
+    },
+    getDiffModifier: function(coin) {
+        var algo = this.getAlgorithm(coin);
+        return this.algos[algo] && this.algos[algo].diffModifier;
     },
     init: function () {
         global.Number.prototype.precise = global.Number.prototype.precise || function (coin) {
