@@ -26,9 +26,9 @@ var coins = {
         algorithm: 'sha256',
         multiplier: 1,
         link: {
-            tx: 'https://blockchain.info/btc/tx/{hash}',
-            hash: 'https://blockchain.info/btc/block/{hash}',
-            address: 'https://blockchain.info/btc/address/{hash}',
+            tx: 'https://chainz.cryptoid.info/btc/tx.dws?{hash}.htm',
+            hash: 'https://chainz.cryptoid.info/btc/block.dws?{hash}.htm',
+            address: 'https://chainz.cryptoid.info/btc/address.dws?{hash}.htm',
         },
     },
     BCH: {
