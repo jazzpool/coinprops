@@ -243,7 +243,7 @@ var coinprops = {
     targetToDiff: function(diff, target) {
         var zeroPad = 0;
 
-        for(var i of target) {
+        for(var i = 0; i < target.length; i++) {
             if (i === '0') {
                 zeroPad++;
             } else {
